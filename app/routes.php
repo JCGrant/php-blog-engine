@@ -5,7 +5,7 @@ $app->get('/', function($request, $response, $args) {
 })->setName('home');
 
 $app->get('/blog', function($request, $response, $args) {
-  $sql = "SELECT id, title, content FROM post";
+  $sql = "SELECT id, title, content, datetime FROM post";
   $stmt = $this->db->query($sql);
   $posts = [];
   while ($row = $stmt->fetch()) {
@@ -16,7 +16,7 @@ $app->get('/blog', function($request, $response, $args) {
 
 $app->get('/blog/post/{id}', function($request, $response, $args) {
   $post_id = $args['id'];
-  $sql = "SELECT id, title, content " .
+  $sql = "SELECT id, title, content, datetime " .
          "FROM post " .
          "WHERE id=$post_id";
   $stmt = $this->db->query($sql);
