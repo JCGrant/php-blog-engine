@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Blog</h1>
+
+<ul>
+{% for animal in animals %}
+  <li>Animal: {{ animal }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
