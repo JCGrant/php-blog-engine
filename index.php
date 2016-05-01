@@ -1,6 +1,7 @@
 <?php
 
 require 'vendor/autoload.php';
+require 'app/models/post.php';
 
 $config = require __DIR__ . '/app/config.php';
 $app = new Slim\App($config);
