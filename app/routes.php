@@ -1,17 +1,29 @@
 <?php
 
+class Post {
+  public $id;
+  public $title;
+  public $content;
+
+  public function __construct(array $data) {
+    $this->id = $data['id'];
+    $this->title= $data['title'];
+    $this->content = $data['content'];
+  }
+}
+
 $app->get('/', function($request, $response, $args) {
   return $this->view->render($response, 'home.html');
 })->setName('home');
 
 $app->get('/blog', function($request, $response, $args) {
-  $sql = "SELECT name FROM test";
+  $sql = "SELECT id, title, content FROM post";
   $stmt = $this->db->query($sql);
-  $results = [];
+  $posts = [];
   while ($row = $stmt->fetch()) {
-    $results[] = $row['name'];
+    $posts[] = new Post($row);
   }
-  return $this->view->render($response, 'blog.html', ['animals' => $results]);
+  return $this->view->render($response, 'blog.html', ['posts' => $posts]);
 })->setName('blog');
 
 ?>
