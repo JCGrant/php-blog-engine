@@ -14,4 +14,15 @@ $app->get('/blog', function($request, $response, $args) {
   return $this->view->render($response, 'blog.html', ['posts' => $posts]);
 })->setName('blog');
 
+$app->get('/blog/post/{id}', function($request, $response, $args) {
+  $post_id = $args['id'];
+  $sql = "SELECT id, title, content " .
+         "FROM post " .
+         "WHERE id=$post_id";
+  $stmt = $this->db->query($sql);
+  $row = $stmt->fetch();
+  $post = new Post($row);
+  return $this->view->render($response, 'post.html', ['post' => $post]);
+})->setName('post');
+
 ?>
