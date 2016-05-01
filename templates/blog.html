@@ -7,7 +7,7 @@
 {% for post in posts %}
 <div>
   <h3><a href="{{ path_for('post', {'id': post.id}) }}">{{ post.title }}</a></h3>
-  <small>{{ post.datetime }}</small>
+  <small class='datetime'>{{ post.datetime }}</small>
   <p>{{ post.content }}</p>
 </div>
 {% endfor %}
