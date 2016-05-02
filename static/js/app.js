@@ -19,4 +19,6 @@ Array.prototype.forEach.call(posts, function(post) {
 
   var datetime = post.getElementsByClassName('datetime')[0];
   formatPostDatetime(datetime);
+
+  post.hidden = false;
 });
