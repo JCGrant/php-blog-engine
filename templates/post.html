@@ -2,8 +2,10 @@
 
 {% block content %}
 
-<h1>{{ post.title }}</h1>
-<small class='datetime'>{{ post.datetime }}</small>
-<p>{{ post.content }}</p>
+<div class='post'>
+  <h1>{{ post.title }}</h1>
+  <small class='datetime'>{{ post.datetime }}</small>
+  <div class='content'>{{ post.content }}</div>
+</div>
 
 {% endblock %}

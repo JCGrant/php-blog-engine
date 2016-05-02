@@ -5,10 +5,10 @@
 <h1>Blog</h1>
 
 {% for post in posts %}
-<div>
+<div class='post'>
   <h3><a href="{{ path_for('post', {'id': post.id}) }}">{{ post.title }}</a></h3>
   <small class='datetime'>{{ post.datetime }}</small>
-  <p>{{ post.content }}</p>
+  <div class='content'>{{ post.content }}</div>
 </div>
 {% endfor %}
 
