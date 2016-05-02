@@ -22,7 +22,7 @@ $app->get('/blog/post/{id:[0-9]+}', function($request, $response, $args) {
   $stmt = $this->db->query($sql);
   $result = $stmt->fetch();
   if (!$result) {
-    return $response->withStatus(302)->withHeader('Location', '/404');
+    return $response->withStatus(404);
   }
   $post = new Post($result);
   return $this->view->render($response, 'post.html', ['post' => $post]);
