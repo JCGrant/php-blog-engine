@@ -5,7 +5,9 @@ $app->get('/', function($request, $response, $args) {
 })->setName('home');
 
 $app->get('/blog', function($request, $response, $args) {
-  $sql = "SELECT id, title, content, datetime FROM post";
+  $sql = "SELECT id, title, content, datetime " .
+         "FROM post " .
+         "ORDER BY datetime DESC";
   $stmt = $this->db->query($sql);
   $posts = [];
   while ($row = $stmt->fetch()) {
