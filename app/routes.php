@@ -20,10 +20,11 @@ $app->get('/blog/post/{id:[0-9]+}', function($request, $response, $args) {
          "FROM post " .
          "WHERE id=$post_id";
   $stmt = $this->db->query($sql);
-  if (!$row = $stmt->fetch()) {
+  $result = $stmt->fetch();
+  if (!$result) {
     return $response->withStatus(302)->withHeader('Location', '/404');
   }
-  $post = new Post($row);
+  $post = new Post($result);
   return $this->view->render($response, 'post.html', ['post' => $post]);
 })->setName('post');
 
