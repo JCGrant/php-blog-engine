@@ -7,7 +7,10 @@
 {% for post in posts %}
 <div class='post' hidden>
   <h3><a href="{{ path_for('post', {'id': post.id}) }}">{{ post.title }}</a></h3>
-  <small class='datetime'>{{ post.datetime }}</small>
+  <small>
+    Written by {{ post.author }} -
+    <span class='datetime'>{{ post.datetime }}</span>
+  </small>
   <div class='content'>{{ post.content }}</div>
 </div>
 {% endfor %}
